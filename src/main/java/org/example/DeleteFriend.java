@@ -16,6 +16,10 @@ public class DeleteFriend {
 
 
     private void deleteFrame(){
+
+
+
+
         JFrame frame=new JFrame("Search for the friend");
         text1=new JTextField();
         text2=new JTextField();
