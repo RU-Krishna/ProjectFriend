@@ -7,13 +7,20 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class SearchFriend {
-    private JTextField text1,text2;
+    private JTextField text1,text2;   //Making Two Global Private JTextField for SearchFrame...
 
     public SearchFriend(){
-     searchFrame();
+                            //SearchFriend Constructor....
+     searchFrame(); //calling searchFrame method...
     }
 
-    private void searchFrame(){
+    private void searchFrame(){    //private searchFrame method...
+
+        /*
+        *   Making a new frame With the title search for friend...
+        *    Constructing two JTextFields....
+        *
+        * */
         JFrame frame=new JFrame("Search for the friend");
         text1=new JTextField();
         text2=new JTextField();
@@ -21,41 +28,49 @@ public class SearchFriend {
         frame.add(text1);
         frame.add(new JLabel("last_name"));
         frame.add(text2);
-        JButton button=new JButton("Search");
+        JButton button=new JButton("Search"); //Making a new button with the title 'Search'...
         button.setSize(50,10);
-        frame.add(button);
-        button.addActionListener(new ActionListener() {
+        frame.add(button);        //Adding a new button on the frame...
+        button.addActionListener(new ActionListener() {  //Adding Action Listener...
+
+              //Setting up "Anonymous Class" for action listener...
             @Override
             public void actionPerformed(ActionEvent e) {
-                Friend friend=new Friend(text1.getText(),text2.getText());
-                Search(friend.primary());
-                frame.dispose();
+                Friend friend=new Friend(text1.getText(),text2.getText());  //Making a new constructor for the friend class having only name field...
+                Search(friend.primary());         //Giving the primary key to the Search method...
+                frame.dispose();    //After completing the search the frame gets dispose...
             }
         });
-        JButton button1=new JButton("Cancel");
+        JButton button1=new JButton("Cancel");   //Adding a new cancel button on the frame...
         button1.setSize(50,10);
-        frame.add(button1);
-        button1.addActionListener(new ActionListener() {
+        frame.add(button1);    //Adding the 'Cancel' button on the frame...
+        button1.addActionListener(new ActionListener() {    //Listening the Cancel Button of the frame Class
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.dispose();
+                frame.dispose();  //Disposing/Closing the Search Frame...
             }
         });
         frame.setSize(400,300);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setLayout(new GridLayout(5,2));
+        frame.setLayout(new GridLayout(5,2));  //Adding the components into the grid layout into the ...
         frame.setVisible(true);
-        frame.setLocationRelativeTo(null);
+        frame.setLocationRelativeTo(null);  //Locating the frame on the centre of the screen...
 
 
 
 
     }
     private void Search(String key){
-        boolean flag=false;
+        boolean flag=false;  //Flag
         final String conn = "jdbc:mysql://localhost:3306/Frienddata";
         final String username="root";
         final String password = "hi@SQL22";
+        /*
+        * Setting up connection with the "Mysql" through the jdbc...
+        * Setting up a ResultSet for retrieving the info of the searched friend...
+        * Printing the info of the friend on the showMessageDialogBox of the JOptionPane...
+        *
+        * */
         try(Connection connection= DriverManager.getConnection(conn,username,password);
             Statement statement= connection.createStatement();
              ResultSet set=statement.executeQuery("SELECT * FROM friend WHERE friend.Id = '"+key+"';")){
@@ -69,11 +84,14 @@ public class SearchFriend {
                             "D_O_B= "+set.getString(7);
                     JOptionPane.showMessageDialog(null, "Friend info:-\n" + str);
                 }
-                if(!flag)
+                if(!flag)  //If the friend was not found...
+                       //showMessageDialogBox with message "FriendAbsent" comes in front of u...
                    JOptionPane.showMessageDialog(null,"Friend absent");
 
         }
         catch(SQLException e){
+
+            //If there is an SQLException showMessageDialogBox with message "Something Went Wrong" is shown...
             JOptionPane.showMessageDialog(null,"Something went wrong");
         }
     }

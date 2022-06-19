@@ -7,53 +7,66 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class DeleteFriend {
-    private JTextField text1,text2;
+    //Delete friend class
 
-    public DeleteFriend(){
-        deleteFrame();
+    private JTextField text1,text2;   //Global private text fields for asking the name of the user to be deleted
+
+    public DeleteFriend(){    //DeleteFriend Constructor...
+        deleteFrame();          //frame for taking the info of the user...
 
     }
 
 
     private void deleteFrame(){
-        JFrame frame=new JFrame("Search for the friend");
-        text1=new JTextField();
+        //Making new frame for asking the user_name and delete him/her from the database...
+        JFrame frame=new JFrame("Delete the friend");  //Constructing a new frame...
+        text1=new JTextField();    //Constructing new fields for taking input...
         text2=new JTextField();
-        frame.add(new JLabel("first_name"));
+        frame.add(new JLabel("first_name"));  //Adding new label as a hint for first_name...
         frame.add(text1);
-        frame.add(new JLabel("last_name"));
+        frame.add(new JLabel("last_name"));  //Adding new label as a hint for last_name...
         frame.add(text2);
-        JButton button=new JButton("Delete");
+        JButton button=new JButton("Delete");  //Constructing a new delete button...
         button.setSize(50,10);
-        frame.add(button);
-        button.addActionListener(new ActionListener() {
+        frame.add(button);     //Adding button to the frame
+        button.addActionListener(new ActionListener() {   //Anonymous Action listener class for the 'Delete' button...
             @Override
-            public void actionPerformed(ActionEvent e) {
-                Friend friend=new Friend(text1.getText(),text2.getText());
+            public void actionPerformed(ActionEvent e) {  //Action performed method of the action listener...
+                Friend friend=new Friend(text1.getText(),text2.getText());   //Friend class constructor...
                 delete(friend.primary());
-                frame.dispose();
+                frame.dispose();   //Disposing/Closing the new frame after the deletion of the friend...
             }
         });
-        JButton button1=new JButton("Cancel");
+        JButton button1=new JButton("Cancel");  //Adding a new Cancel button...
         button1.setSize(50,10);
         frame.add(button1);
-        button1.addActionListener(new ActionListener() {
-            @Override
+        button1.addActionListener(new ActionListener() {    //Anonymous class...
+            //For listening the cancel button...
+            @Override   //Disposing the frame on clicking Cancel button...
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
             }
         });
         frame.setSize(400,300);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setLayout(new GridLayout(5,2));
+        frame.setLayout(new GridLayout(5,2));   //Grid layout for all the components of the frame...
         frame.setVisible(true);
-        frame.setLocationRelativeTo(null);
+        frame.setLocationRelativeTo(null); //setting frame to the centre of the screen...
 
     }
-    private void delete(String key){
-        final String conn = "jdbc:mysql://localhost:3306/Frienddata";
-        final String username="root";
-        final String password = "hi@SQL22";
+    private void delete(String key){  //Delete method for removing the friend from the database...
+        final String conn = "jdbc:mysql://localhost:3306/Frienddata";  //Connection string for the jdbc...
+        final String username="root";  //Username for the database
+        final String password = "hi@SQL22";   //Password of the database...
+
+        /*
+        *    Try catch with resources...
+        *    Setting up connection with the jdbc in try with resources...
+        *    Setting up a statement with the jdbc...
+        *     Executing to delete query with the "executeUpdate" method of statement...
+        *     catching a sql exception and representing a MessageDialogBox with the message "Unsuccessful Deletion or absenteism of that
+        *     friend in the database..."
+        * */
         try(Connection connection= DriverManager.getConnection(conn,username,password);
             Statement statement= connection.createStatement()){
                 statement.executeUpdate("DELETE FROM friend WHERE friend.id='"+key+"';");

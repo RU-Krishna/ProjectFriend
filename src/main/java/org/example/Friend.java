@@ -89,7 +89,7 @@ public  class Friend implements Comparable<Friend> {
 
   @Override     //Overriding the toString method for getting the desired info...
   public String  toString(){
-         return primary()+"\n"+getFirst_name()+"\n"+getLast_name()+" \n"+getPhn_num()+" \n"+getEmail_id()+"\n"+getD_O_B()+"\n"+getAddress();
+         return primary()+"\n"+getFirst_name()+"\n"+getLast_name()+" \n"+getPhn_num()+" \n"+getEmail_id()+"\n"+getAddress()+"\n"+getD_O_B();
 
   }
 

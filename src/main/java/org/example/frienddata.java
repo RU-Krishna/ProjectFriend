@@ -10,6 +10,14 @@ public class frienddata {
         final String username="root";
         final String password = "hi@SQL22";
 
+        /*
+        *   Inserting a new friend into the MySQL database...
+        *   Establishing a connection with the mysql database in the try with resources...
+        *   Inserting a friend into the database with 'executeUpdate' method...
+        *   In case if we met with a "SQLException" A messageDialogBox comes in front of us with the
+        *   message :- "Something went Wrong"...
+        * */
+
         public void insert(@NotNull Friend friend){
             String str="INSERT INTO friend VALUES('"+friend.primary()+"','"+friend.getFirst_name()+"','"+friend.getLast_name()+"','"+friend.getPhn_num()+"','"+friend.getEmail_id()+"','"+friend.getAddress()+"','"+Date.valueOf(friend.getD_O_B())+"');";
             try (Connection con= DriverManager.getConnection(conn,username,password);
