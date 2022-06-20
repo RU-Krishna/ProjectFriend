@@ -32,9 +32,26 @@ public class DeleteFriend {
         button.addActionListener(new ActionListener() {   //Anonymous Action listener class for the 'Delete' button...
             @Override
             public void actionPerformed(ActionEvent e) {  //Action performed method of the action listener...
-                Friend friend=new Friend(text1.getText(),text2.getText());   //Friend class constructor...
-                delete(friend.primary());
-                frame.dispose();   //Disposing/Closing the new frame after the deletion of the friend...
+                /*
+                * If the user clicks on the 'Delete' button with any
+                * of the empty fields:-
+                * then a "MessageDialogBox" appears in front of you with the message:-
+                *        "Empty fields not allowed"...
+                * */
+
+
+                if(text1.getText().equals("") || text2.getText().equals(""))
+                    JOptionPane.showMessageDialog(frame,"Empty fields not allowed");
+                /*
+                * If all the fields are filled then
+                * Delete the friend data given by the user...
+                * and Dispose the frame...
+                * */
+                else {
+                    Friend friend = new Friend(text1.getText(), text2.getText());   //Friend class constructor...
+                    delete(friend.primary());
+                    frame.dispose();   //Disposing/Closing the new frame after the deletion of the friend...
+                }
             }
         });
         JButton button1=new JButton("Cancel");  //Adding a new Cancel button...
@@ -68,9 +85,13 @@ public class DeleteFriend {
         *     friend in the database..."
         * */
         try(Connection connection= DriverManager.getConnection(conn,username,password);
-            Statement statement= connection.createStatement()){
-                statement.executeUpdate("DELETE FROM friend WHERE friend.id='"+key+"';");
-                JOptionPane.showMessageDialog(null, "Successful Deletion:-\n");
+            PreparedStatement statement= connection.prepareStatement("DELETE FROM friend WHERE friend.id = ? ");){
+                 statement.setString(1,key);
+                 int check= statement.executeUpdate();
+                 if(check==1)
+                     JOptionPane.showMessageDialog(null, "Successful Deletion:-\n");
+                 else
+                     JOptionPane.showMessageDialog(null,"Unsuccessful Deletion\n Friend absent");
         }
         catch(SQLException e){
             JOptionPane.showMessageDialog(null,"Unsuccessful Deletion or \n Friend Absent"+e);

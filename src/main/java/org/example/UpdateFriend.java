@@ -48,9 +48,28 @@ public class UpdateFriend{
             //Listening the "Update" button...
             @Override
             public void actionPerformed(ActionEvent e) {
-                Friend friend=new Friend(text1.getText(),text2.getText());
-                Update(friend.primary(), Objects.requireNonNull(combo.getSelectedItem()).toString(),text3.getText());
-                frame.dispose();   //After updating the info the frame gets info...
+                /*
+                *
+                * If the user pressed the 'Update' button with
+                * any of the empty fields then
+                * a "MessageDialogBox" appears in front of the user with
+                * the message "Empty Fields not allowed"...
+                *
+                * */
+                if(text1.getText().equals("") || text2.getText().equals("") || text3.getText().equals(""))
+                    JOptionPane.showMessageDialog(frame,"Empty fields not allowed");
+                /*
+                *
+                * In case of no empty fields
+                * given info is fetched by the program
+                * and the friend info updated...
+                *
+                * */
+                else {
+                    Friend friend = new Friend(text1.getText(), text2.getText());
+                    Update(friend.primary(), Objects.requireNonNull(combo.getSelectedItem()).toString(), text3.getText());
+                    frame.dispose();   //After updating the info the frame gets info...
+                }
             }
         });
         JButton button1=new JButton("Cancel");  //Making a new "Cancel" button...
@@ -81,18 +100,18 @@ public class UpdateFriend{
 
         //Connecting to the MYSQL JDBC in the try catch with resources ...
         try(Connection connection= DriverManager.getConnection(conn,username,password);
-            Statement statement= connection.createStatement()){
-            switch (item) {
-                case "Phn_num" ->
-                        statement.executeUpdate("UPDATE friend SET friend.Phn_num='" + value + "'WHERE friend.id='" + key + "';");
-                case "Email_id" ->
-                        statement.executeUpdate("UPDATE friend SET friend.Email_id='" + value + "'WHERE friend.id='" + key + "';");
-                case "Address" ->
-                        statement.executeUpdate("UPDATE friend SET friend.Address='" + value + "'WHERE friend.id='" + key + "';");
-            }
+            PreparedStatement statement= connection.prepareStatement("UPDATE friend SET "+item+" = ? WHERE friend.Id= ?")
+            ){
+            statement.setString(1,value);
+            statement.setString(2,key);
+            int check=statement.executeUpdate();
+            if(check==1)
+                JOptionPane.showMessageDialog(null,"Updated Successfully");
+            else
+                JOptionPane.showMessageDialog(null,"Friend absent");
         }
         catch(SQLException e){
-            JOptionPane.showMessageDialog(null,"Something went wrong");
+            JOptionPane.showMessageDialog(null,"Something went wrong\n Please try Again\n"+e);
         }
     }
 }

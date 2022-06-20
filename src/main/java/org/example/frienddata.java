@@ -19,10 +19,16 @@ public class frienddata {
         * */
 
         public void insert(@NotNull Friend friend){
-            String str="INSERT INTO friend VALUES('"+friend.primary()+"','"+friend.getFirst_name()+"','"+friend.getLast_name()+"','"+friend.getPhn_num()+"','"+friend.getEmail_id()+"','"+friend.getAddress()+"','"+Date.valueOf(friend.getD_O_B())+"');";
             try (Connection con= DriverManager.getConnection(conn,username,password);
-                 Statement stat=con.createStatement()){
-                 stat.executeUpdate(str);
+                 PreparedStatement stat=con.prepareStatement("INSERT INTO friend VALUES (?,?,?,?,?,?,?)")){
+                stat.setString(1,friend.primary());
+                stat.setString(2,friend.getFirst_name());
+                stat.setString(3,friend.getLast_name());
+                stat.setString(4,friend.getPhn_num());
+                stat.setString(5,friend.getEmail_id());
+                stat.setString(6,friend.getAddress());
+                stat.setDate(7,Date.valueOf(friend.getD_O_B()));
+                 stat.executeUpdate();
 
             }
             catch(SQLException e){

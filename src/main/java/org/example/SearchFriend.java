@@ -36,9 +36,27 @@ public class SearchFriend {
               //Setting up "Anonymous Class" for action listener...
             @Override
             public void actionPerformed(ActionEvent e) {
-                Friend friend=new Friend(text1.getText(),text2.getText());  //Making a new constructor for the friend class having only name field...
-                Search(friend.primary());         //Giving the primary key to the Search method...
-                frame.dispose();    //After completing the search the frame gets dispose...
+                /*
+                *
+                * If any of the fields is empty
+                * when the 'Search' button is pressed
+                * a "MessageDialogBox" appears in front of the user
+                * with the message "Empty Fields not allowed"*
+                * Root frame="searchFrame"
+                * */
+                if(text1.getText().equals("") || text2.getText().equals(""))
+                    JOptionPane.showMessageDialog(frame,"Empty fields not allowed");
+                /*
+                *
+                * In case of no empty fields
+                * the friend is searched into the database...
+                *
+                * */
+                else {
+                    Friend friend = new Friend(text1.getText(), text2.getText());  //Making a new constructor for the friend class having only name field...
+                    Search(friend.primary());         //Giving the primary key to the Search method...
+                    frame.dispose();    //After completing the search the frame gets dispose...
+                }
             }
         });
         JButton button1=new JButton("Cancel");   //Adding a new cancel button on the frame...
@@ -72,21 +90,24 @@ public class SearchFriend {
         *
         * */
         try(Connection connection= DriverManager.getConnection(conn,username,password);
-            Statement statement= connection.createStatement();
-             ResultSet set=statement.executeQuery("SELECT * FROM friend WHERE friend.Id = '"+key+"';")){
-                while(set.next()) {
-                    flag=true;
-                    String str = "first_name= "+set.getString(2) + "\n" +
-                            "last_name= "+set.getString(3) + "\n" +
-                            "Phn_num= "+set.getString(4) + "\n" +
-                            "Email_id= "+set.getString(5) + "\n" +
-                            "Address= "+set.getString(6) + "\n" +
-                            "D_O_B= "+set.getString(7);
-                    JOptionPane.showMessageDialog(null, "Friend info:-\n" + str);
-                }
-                if(!flag)  //If the friend was not found...
-                       //showMessageDialogBox with message "FriendAbsent" comes in front of u...
-                   JOptionPane.showMessageDialog(null,"Friend absent");
+            PreparedStatement statement= connection.prepareStatement("SELECT * FROM friend WHERE friend.Id = ?");)
+           {
+               statement.setString(1,key);
+               ResultSet set=statement.executeQuery();
+            while(set.next()) {
+                flag=true;
+                String str = "first_name= "+set.getString(2) + "\n" +
+                        "last_name= "+set.getString(3) + "\n" +
+                        "Phn_num= "+set.getString(4) + "\n" +
+                        "Email_id= "+set.getString(5) + "\n" +
+                        "Address= "+set.getString(6) + "\n" +
+                        "D_O_B= "+set.getString(7);
+                JOptionPane.showMessageDialog(null, "Friend info:-\n" + str);
+            }
+            set.close();
+            if(!flag)  //If the friend was not found...
+                //showMessageDialogBox with message "FriendAbsent" comes in front of u...
+                JOptionPane.showMessageDialog(null,"Friend absent");
 
         }
         catch(SQLException e){

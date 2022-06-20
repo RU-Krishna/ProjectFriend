@@ -64,7 +64,10 @@ public class Main  {
                     case "2" -> new UpdateFriend();
                     case "3" -> new SearchFriend();
                     case "4" -> new DeleteFriend();
-                    case "5" -> option.dispose();
+                    case "5" -> {
+                        option.dispose();
+                        System.exit(0);  //exit on the user permission with the status 0 representing normal termination...
+                    }
                     default -> JOptionPane.showMessageDialog(option, "Incorrect option");
                 }
                 }
