@@ -30,6 +30,7 @@ public class Friendlies extends JFrame implements ActionListener {
     *
     * */
     private  JButton button = new JButton("Save");
+    private  JButton button2=new JButton("Cancel");
 
 
     public Friendlies() {
@@ -59,6 +60,14 @@ public class Friendlies extends JFrame implements ActionListener {
         button.setHorizontalAlignment(JButton.CENTER);
         button.setVerticalAlignment(JButton.CENTER);
         add(button);
+        add(button2);
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+
         setLocationRelativeTo(null);
     }
 

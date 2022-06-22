@@ -18,7 +18,7 @@ public class frienddata {
         *   message :- "Something went Wrong"...
         * */
 
-        public void insert(@NotNull Friend friend){
+        protected void insert(@NotNull Friend friend){
             try (Connection con= DriverManager.getConnection(conn,username,password);
                  PreparedStatement stat=con.prepareStatement("INSERT INTO friend VALUES (?,?,?,?,?,?,?)")){
                 stat.setString(1,friend.primary());
