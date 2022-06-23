@@ -31,6 +31,7 @@ public class Friendlies extends JFrame implements ActionListener {
     * */
     private  JButton button = new JButton("Save");
     private  JButton button2=new JButton("Cancel");
+    private int check;
 
 
     public Friendlies() {
@@ -96,9 +97,10 @@ public class Friendlies extends JFrame implements ActionListener {
         field5.setText(" ");
         field6.setText(" ");
         dispose();
-        new frienddata().insert(frnd);
+        check= new frienddata().insert(frnd);
         //Showing the showMessageDialogBox with the message "New Friend Added"...
-        JOptionPane.showMessageDialog(this,"New Friend Added\n"+ frnd);
+        if(check==1)
+            JOptionPane.showMessageDialog(this,"New Friend Added\n"+ frnd);
     }
     }
 }

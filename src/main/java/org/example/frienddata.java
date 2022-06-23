@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.sql.*;
 
 public class frienddata {
+       private int status;
         final String conn = "jdbc:mysql://localhost:3306/Frienddata";
         final String username="root";
         final String password = "hi@SQL22";
@@ -18,7 +19,7 @@ public class frienddata {
         *   message :- "Something went Wrong"...
         * */
 
-        protected void insert(@NotNull Friend friend){
+        protected int insert(@NotNull Friend friend){
             try (Connection con= DriverManager.getConnection(conn,username,password);
                  PreparedStatement stat=con.prepareStatement("INSERT INTO friend VALUES (?,?,?,?,?,?,?)")){
                 stat.setString(1,friend.primary());
@@ -28,12 +29,16 @@ public class frienddata {
                 stat.setString(5,friend.getEmail_id());
                 stat.setString(6,friend.getAddress());
                 stat.setDate(7,Date.valueOf(friend.getD_O_B()));
-                 stat.executeUpdate();
+                status=stat.executeUpdate();
 
             }
             catch(SQLException e){
                 JOptionPane.showMessageDialog(null,"Something went wrong try again"+e);
             }
+            catch(IllegalArgumentException e){
+                JOptionPane.showMessageDialog(null,"Wrong Date Format");
+            }
+            return status;
 
         }
 
