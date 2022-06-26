@@ -32,6 +32,7 @@ public class Main  {
         *     c. Address
         * 3. Search for a friend...
         * 4. Delete a friend...
+        * 5. Read the whole friend data...
         *
         * We made a frame here,
         *      in which we add labels for all menu options...
@@ -43,7 +44,8 @@ public class Main  {
         option.add(new JLabel("2. Update the friend"));
         option.add(new JLabel("3. Search for a friend"));
         option.add(new JLabel("4. Delete the data of a friend"));
-        option.add(new JLabel("5. Exit"));
+        option.add(new JLabel("5. Read the whole data"));
+        option.add(new JLabel("6. Exit"));
         JTextField field=new JTextField(2);
         option.add(field);
         JButton op=new JButton("Proceed");
@@ -64,7 +66,8 @@ public class Main  {
                     case "2" -> new UpdateFriend();
                     case "3" -> new SearchFriend();
                     case "4" -> new DeleteFriend();
-                    case "5" -> {
+                    case "5" -> new ReadFriend();
+                    case "6" -> {
                         option.dispose();
                         System.exit(0);  //exit on the user permission with the status 0 representing normal termination...
                     }
