@@ -97,9 +97,9 @@ public  class Friend implements Comparable<Friend> {
     //Default pattern for sorting is name...
     public int compareTo(Friend o) {
         int sort=first_name.compareTo(o.first_name);
-        if(sort!=0)
+        if(sort==0)
             return last_name.compareTo(o.last_name);
-        return 0;
+        return sort;
     }
     @Override  //Overriding equals method...
          //So that it compares two friend or searched friends by their name...

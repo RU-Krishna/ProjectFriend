@@ -49,6 +49,7 @@ public class Main  {
         JTextField field=new JTextField(2);
         option.add(field);
         JButton op=new JButton("Proceed");
+        option.getRootPane().setDefaultButton(op);  //Make the button to 'proceed' the task on the enter button and the space key...
         op.setBorderPainted(true);
         option.add(op);
         option.setSize(400,200);
