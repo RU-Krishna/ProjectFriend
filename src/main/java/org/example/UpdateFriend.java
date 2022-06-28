@@ -25,7 +25,7 @@ public class UpdateFriend{
     }
 
     private void UpdateFrame(){
-        JFrame frame=new JFrame("Search for the friend");
+        JFrame frame=new JFrame("Update the friend");
         /*Constructing a new frame for asking the updated info of the user...
         * with the title "Search for the friend..."
         */
