@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
+
 
 public class ReadFriend {
 
@@ -19,7 +19,7 @@ public class ReadFriend {
      *  This "OK" button disposes the frame on pressing the "ENTER", "SPACE" or "MOUSE" clicks...
      *  We can also dispose the frame on the Close button present in the top right corner of the JFrame...
      * */
-    private List<Friend> list = new LinkedList<Friend>(); //Here we made a Linked List of the List Interface...
+    private final List<Friend> list = new LinkedList<>(); //Here we made a Linked List of the List Interface...
 
     public ReadFriend() {  //ReadFriend constructor...
         read();  //read method...
@@ -114,9 +114,7 @@ public class ReadFriend {
          *  with the ListIterator...
          *
          * */
-        ListIterator<Friend> it = list.listIterator();
-        while (it.hasNext()) {
-            Friend info = it.next();
+        for (Friend info : list) {
             frame.add(new JLabel(info.getFirst_name()));
             frame.add((new JLabel(info.getLast_name())));
             frame.add(new JLabel(info.getPhn_num()));
