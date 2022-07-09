@@ -94,12 +94,9 @@ public class UpdateFriend {
 
 
     private void Update(String key, String item, String value) {
-        final String conn = "jdbc:mysql://localhost:3306/Frienddata";
-        final String username = "root";
-        final String password = "hi@SQL22";
 
         //Connecting to the MYSQL JDBC in the try catch with resources ...
-        try (Connection connection = DriverManager.getConnection(conn, username, password);
+        try (Connection connection = DriverManager.getConnection(CreateDatabase.conn, CreateDatabase.username, CreateDatabase.password);
              PreparedStatement statement = connection.prepareStatement("UPDATE friend SET " + item + " = ? WHERE friend.Id= ?")
         ) {
             statement.setString(1, value);

@@ -73,9 +73,6 @@ public class DeleteFriend {
     }
 
     private void delete(String key) {  //Delete method for removing the friend from the database...
-        final String conn = "jdbc:mysql://localhost:3306/Frienddata";  //Connection string for the jdbc...
-        final String username = "root";  //Username for the database
-        final String password = "hi@SQL22";   //Password of the database...
 
         /*
          *    Try catch with resources...
@@ -85,8 +82,8 @@ public class DeleteFriend {
          *     catching a sql exception and representing a MessageDialogBox with the message "Unsuccessful Deletion or absenteism of that
          *     friend in the database..."
          * */
-        try (Connection connection = DriverManager.getConnection(conn, username, password);
-             PreparedStatement statement = connection.prepareStatement("DELETE FROM friend WHERE friend.id = ? ");) {
+        try (Connection connection = DriverManager.getConnection(CreateDatabase.conn, CreateDatabase.username, CreateDatabase.password);
+             PreparedStatement statement = connection.prepareStatement("DELETE FROM friend WHERE friend.id = ? ")) {
             statement.setString(1, key);
             int check = statement.executeUpdate();
             if (check == 1)

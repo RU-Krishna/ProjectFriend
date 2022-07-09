@@ -79,16 +79,14 @@ public class SearchFriend {
 
     private void Search(String key) {
         boolean flag = false;  //Flag
-        final String conn = "jdbc:mysql://localhost:3306/Frienddata";
-        final String username = "root";
-        final String password = "hi@SQL22";
+
         /*
          * Setting up connection with the "Mysql" through the jdbc...
          * Setting up a ResultSet for retrieving the info of the searched friend...
          * Printing the info of the friend on the showMessageDialogBox of the JOptionPane...
          *
          * */
-        try (Connection connection = DriverManager.getConnection(conn, username, password);
+        try (Connection connection = DriverManager.getConnection(CreateDatabase.conn, CreateDatabase.username, CreateDatabase.password);
              PreparedStatement statement = connection.prepareStatement("SELECT * FROM friend WHERE friend.Id = ?");) {
             statement.setString(1, key);
             ResultSet set = statement.executeQuery();

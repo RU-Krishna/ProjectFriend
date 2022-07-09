@@ -7,17 +7,17 @@ import java.awt.event.ActionListener;
 
 public class Main {
 
-    // * Creator :- Krishna Purwar
-    // * Purpose:- For storing the friend/family details like
-    // *              *First name
-    // *              *Last name
-    // *              *Phone number
-    // *              *Email id
-    // *              *Address
-    // *              *Date of birth...
-    // *
-    // *
-    // *
+    /* Creator :- Krishna Purwar
+     * Hey! User First set up your Database connection in "CreateDatabase" file...
+     * So You can use it further error Free...
+     * Purpose:- For storing the friend/family details like
+     *              *First name
+     *              *Last name
+     *              *Phone number
+     *              *Email id
+     *              *Address
+     *              *Date of birth...
+     */
 
 
     public static void main(String[] args) {

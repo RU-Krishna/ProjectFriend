@@ -23,15 +23,18 @@ public class Friendlies extends JFrame implements ActionListener {
      *  Making 6 new global private JTextFields for taking the info...
      *
      * */
-    private JTextField field1, field2, field3, field4, field5, field6;
+    private final JTextField field1;
+    private final JTextField field2;
+    private final JTextField field3;
+    private final JTextField field4;
+    private final JTextField field5;
+    private final JTextField field6;
 
     /*
      *   Making a new private button with the title "Save"
      *
      * */
-    private JButton button = new JButton("Save");
-    private JButton button2 = new JButton("Cancel");
-    private int check;
+    private final JButton button = new JButton("Save");
 
 
     public Friendlies() {
@@ -61,6 +64,7 @@ public class Friendlies extends JFrame implements ActionListener {
         button.setHorizontalAlignment(JButton.CENTER);
         button.setVerticalAlignment(JButton.CENTER);
         add(button);
+        JButton button2 = new JButton("Cancel");
         add(button2);
         button2.addActionListener(new ActionListener() {
             @Override
@@ -96,7 +100,7 @@ public class Friendlies extends JFrame implements ActionListener {
             field5.setText(" ");
             field6.setText(" ");
             dispose();
-            check = new frienddata().insert(frnd);
+            int check = new frienddata().insert(frnd);
             //Showing the showMessageDialogBox with the message "New Friend Added"...
             if (check == 1)
                 JOptionPane.showMessageDialog(this, "New Friend Added\n" + frnd);

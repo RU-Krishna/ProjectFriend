@@ -7,9 +7,6 @@ import java.sql.*;
 
 public class frienddata {
     private int status;
-    final String conn = "jdbc:mysql://localhost:3306/Frienddata";
-    final String username = "root";
-    final String password = "hi@SQL22";
 
     /*
      *   Inserting a new friend into the MySQL database...
@@ -20,7 +17,7 @@ public class frienddata {
      * */
 
     protected int insert(@NotNull Friend friend) {
-        try (Connection con = DriverManager.getConnection(conn, username, password);
+        try (Connection con = DriverManager.getConnection(CreateDatabase.conn, CreateDatabase.username, CreateDatabase.password);
              PreparedStatement stat = con.prepareStatement("INSERT INTO friend VALUES (?,?,?,?,?,?,?)")) {
             stat.setString(1, friend.primary());
             stat.setString(2, friend.getFirst_name());

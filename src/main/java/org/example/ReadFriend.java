@@ -21,15 +21,16 @@ public class ReadFriend {
      * */
     private final List<Friend> list = new LinkedList<>(); //Here we made a Linked List of the List Interface...
 
+    private boolean check = true;
+
     public ReadFriend() {  //ReadFriend constructor...
         read();  //read method...
-        readFriendFrame();  //readFriendMethod...
+        if (check)
+            readFriendFrame();  //readFriendMethod...
     }
 
     private void read() {
-        final String conn = "jdbc:mysql://localhost:3306/Frienddata"; //Immutable Connection String...
-        final String username = "root";          //Immutable Username...
-        final String password = "hi@SQL22";    //Immutable Password...
+
         /*
          * Setting up connection with the "Mysql" through the jdbc...
          * Making a prepared statement For reading the whole data from the database...
@@ -38,8 +39,7 @@ public class ReadFriend {
          * Adding Friend object into the linked list one at a go...
          *
          * */
-        try (Connection connection = DriverManager.getConnection(conn, username, password);
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM friend ")) {
+        try (Connection connection = DriverManager.getConnection(CreateDatabase.conn, CreateDatabase.username, CreateDatabase.password); PreparedStatement statement = connection.prepareStatement("SELECT * FROM friend ")) {
             ResultSet set = statement.executeQuery();
             while (set.next()) {
                 Friend info = new Friend();
@@ -60,6 +60,7 @@ public class ReadFriend {
          *
          * */ catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Something went wrong");
+            check = false;
         }
     }
 
