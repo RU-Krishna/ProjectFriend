@@ -7,30 +7,30 @@ import java.awt.event.ActionListener;
 
 public class Friendlies extends JFrame implements ActionListener {
 
-   /*
-   *  This is a class for constructing a new frame for taking the info of the friend...
-   *  Info is asked in the order:-
-   *  first_name
-   *  last_name
-   *  Phone_num
-   *  Email_Id
-   *  Address
-   *  Date_of_Birth in the form (yyyy-mm-dd)...
-   * */
+    /*
+     *  This is a class for constructing a new frame for taking the info of the friend...
+     *  Info is asked in the order:-
+     *  first_name
+     *  last_name
+     *  Phone_num
+     *  Email_Id
+     *  Address
+     *  Date_of_Birth in the form (yyyy-mm-dd)...
+     * */
 
 
     /*
-    *  Making 6 new global private JTextFields for taking the info...
-    *
-    * */
+     *  Making 6 new global private JTextFields for taking the info...
+     *
+     * */
     private JTextField field1, field2, field3, field4, field5, field6;
 
     /*
-    *   Making a new private button with the title "Save"
-    *
-    * */
-    private  JButton button = new JButton("Save");
-    private  JButton button2=new JButton("Cancel");
+     *   Making a new private button with the title "Save"
+     *
+     * */
+    private JButton button = new JButton("Save");
+    private JButton button2 = new JButton("Cancel");
     private int check;
 
 
@@ -74,7 +74,7 @@ public class Friendlies extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-    //Giving the body to the "actionPerformed" method of the interface ActionListener...
+        //Giving the body to the "actionPerformed" method of the interface ActionListener...
         Friend frnd = new Friend();      //Calling a new friend constructor...
         frnd.setFirst_name(field1.getText());
         frnd.setLast_name((field2.getText()));
@@ -84,23 +84,22 @@ public class Friendlies extends JFrame implements ActionListener {
         frnd.setD_O_B(field6.getText());
 
         //Checking for the empty field...
-        if(frnd.getFirst_name().equals("") || frnd.getLast_name().equals("")|| frnd.getPhn_num().equals("")|| frnd.getAddress().equals("") || frnd.getEmail_id().equals("") || frnd.getD_O_B().equals("")) {
+        if (frnd.getFirst_name().equals("") || frnd.getLast_name().equals("") || frnd.getPhn_num().equals("") || frnd.getAddress().equals("") || frnd.getEmail_id().equals("") || frnd.getD_O_B().equals("")) {
             JOptionPane.showMessageDialog(this, "No Empty Field Allowed");
             //Displaying the showMessageDialogBox with the message "No Empty Field Allowed"...
+        } else {
+            button.setEnabled(false);  //Deactivating the  Button...
+            field1.setText(" ");
+            field2.setText(" ");
+            field3.setText(" ");
+            field4.setText(" ");
+            field5.setText(" ");
+            field6.setText(" ");
+            dispose();
+            check = new frienddata().insert(frnd);
+            //Showing the showMessageDialogBox with the message "New Friend Added"...
+            if (check == 1)
+                JOptionPane.showMessageDialog(this, "New Friend Added\n" + frnd);
         }
-         else{
-             button.setEnabled(false);  //Deactivating the  Button...
-        field1.setText(" ");
-        field2.setText(" ");
-        field3.setText(" ");
-        field4.setText(" ");
-        field5.setText(" ");
-        field6.setText(" ");
-        dispose();
-        check= new frienddata().insert(frnd);
-        //Showing the showMessageDialogBox with the message "New Friend Added"...
-        if(check==1)
-            JOptionPane.showMessageDialog(this,"New Friend Added\n"+ frnd);
-    }
     }
 }
