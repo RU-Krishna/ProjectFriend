@@ -107,7 +107,7 @@ public class UpdateFriend {
             else
                 JOptionPane.showMessageDialog(null, "Friend absent");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Something went wrong\n Please try Again\n" + e);
+            JOptionPane.showMessageDialog(null, "Something went wrong\n Please try Again\n" );
         }
     }
 }

@@ -91,7 +91,7 @@ public class DeleteFriend {
             else
                 JOptionPane.showMessageDialog(null, "Unsuccessful Deletion\n Friend absent");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Unsuccessful Deletion or \n Friend Absent" + e);
+            JOptionPane.showMessageDialog(null, "Unsuccessful Deletion or \n Friend Absent" );
         }
     }
 }

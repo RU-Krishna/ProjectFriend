@@ -29,7 +29,7 @@ public class frienddata {
             status = stat.executeUpdate();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Something went wrong try again" + e);
+            JOptionPane.showMessageDialog(null, "Something went wrong try again" );
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(null, "Wrong Date Format");
         }
