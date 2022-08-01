@@ -83,7 +83,7 @@ public class CreateDatabase {
              *  and the reason of the error...
              *
              * */
-            JOptionPane.showMessageDialog(null, "Something went wrong\n" );
+            JOptionPane.showMessageDialog(null, "Something went wrong\n");
         }
     }
 

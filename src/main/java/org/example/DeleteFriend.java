@@ -28,8 +28,7 @@ public class DeleteFriend {
             public void actionPerformed(ActionEvent e) {
                 if (first_text.getText().isEmpty() || last_text.getText().isEmpty())
                     JOptionPane.showMessageDialog(frame, "Empty Fields not allowed");
-                else
-                    delete();
+                else delete();
             }
         });
         cancelButton.addActionListener(new ActionListener() {
@@ -55,8 +54,7 @@ public class DeleteFriend {
                 break;
             }
         }
-        if (flag)
-            JOptionPane.showMessageDialog(null, "Friend Absent");
+        if (flag) JOptionPane.showMessageDialog(null, "Friend Absent");
 
     }
 

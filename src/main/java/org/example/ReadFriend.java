@@ -2,12 +2,8 @@ package org.example;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
-
 import java.awt.*;
 import java.util.Collections;
-
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class ReadFriend {
 

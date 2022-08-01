@@ -74,7 +74,7 @@ public class AddFriend {
 
     }
 
-     private boolean validate() {
+    private boolean validate() {
         String Email_patten = "^\\w+@[a-z]+\\.[a-z]+$";
         String Phn_pattern = "\\d{10}";
         String Address_pattern = "[\\w.,-_\\s]+";
@@ -83,17 +83,16 @@ public class AddFriend {
         var phn_pattern = Pattern.compile(Phn_pattern).matcher(Phn_num.getText().trim());
         var address_pattern = Pattern.compile(Address_pattern).matcher(Address.getText().trim());
         var d_o_b_pattern = Pattern.compile(D_O_B_pattern).matcher(D_O_B.getText().trim());
-        var year=Integer.parseInt(d_o_b_pattern.group(1));
-        var month=Integer.parseInt(d_o_b_pattern.group(2));
-        var day=Integer.parseInt(d_o_b_pattern.group(3));
-        if (!(email_pattern.matches() && phn_pattern.matches() && address_pattern.matches() && validateD_O_B(year,month,day))) {
+        var year = Integer.parseInt(d_o_b_pattern.group(1));
+        var month = Integer.parseInt(d_o_b_pattern.group(2));
+        var day = Integer.parseInt(d_o_b_pattern.group(3));
+        if (!(email_pattern.matches() && phn_pattern.matches() && address_pattern.matches() && validateD_O_B(year, month, day))) {
             JOptionPane.showMessageDialog(null, "Invalid Email or Phone num or Address or D.O.B.");
             return false;
         }
 
         return true;
     }
-
 
 
     private boolean check(Friend friend) {
@@ -105,27 +104,24 @@ public class AddFriend {
     }
 
 
-    private boolean validateD_O_B(int year,int month,int day){
-        boolean flag=true;
-        switch (month){
+    private boolean validateD_O_B(int year, int month, int day) {
+        switch (month) {
             case 1:
             case 3:
             case 5:
             case 7:
             case 8:
             case 10:
-            case 12:{
-                      if(day>0 && day<32)
-                       return true;
+            case 12: {
+                if (day > 0 && day < 32)
+                    return true;
             }
-            case 2:
-            {
-                if(year%4==0) {
+            case 2: {
+                if (year % 4 == 0) {
                     if (day > 0 && day < 30)
                         return true;
-                }
-                else {
-                    if(day>0 && day<29)
+                } else {
+                    if (day > 0 && day < 29)
                         return true;
                 }
 
@@ -133,9 +129,8 @@ public class AddFriend {
             case 4:
             case 6:
             case 9:
-            case 11:
-            {
-                if(day>0 && day<31)
+            case 11: {
+                if (day > 0 && day < 31)
                     return true;
 
             }
