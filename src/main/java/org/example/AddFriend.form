@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="org.example.AddFriend">
+  <grid id="27dc6" binding="AddPanel" layout-manager="GridLayoutManager" row-count="10" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="963" height="446"/>
+    </constraints>
+    <properties>
+      <background color="-4653092"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="32bc5" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-9178428"/>
+          <font size="16"/>
+          <text resource-bundle="Strings" key="first_name"/>
+        </properties>
+      </component>
+      <component id="d8439" class="javax.swing.JTextField" binding="first_name">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-8732686"/>
+          <font size="16"/>
+        </properties>
+      </component>
+      <component id="669d0" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-9178428"/>
+          <font size="16"/>
+          <text resource-bundle="Strings" key="last_name"/>
+        </properties>
+      </component>
+      <component id="6c7ba" class="javax.swing.JTextField" binding="last_name">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-8732686"/>
+          <font size="16"/>
+        </properties>
+      </component>
+      <component id="98ebb" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-9178428"/>
+          <font size="16"/>
+          <text resource-bundle="Strings" key="phn"/>
+        </properties>
+      </component>
+      <component id="79cf0" class="javax.swing.JTextField" binding="Phn_num">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-8732686"/>
+          <font size="16"/>
+        </properties>
+      </component>
+      <component id="d7468" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-9178428"/>
+          <font size="16"/>
+          <text resource-bundle="Strings" key="email"/>
+        </properties>
+      </component>
+      <component id="f2864" class="javax.swing.JTextField" binding="Email_id">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-8732686"/>
+          <font size="16"/>
+        </properties>
+      </component>
+      <component id="87170" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-9178428"/>
+          <font size="16"/>
+          <text resource-bundle="Strings" key="address"/>
+        </properties>
+      </component>
+      <component id="e1b28" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-9178428"/>
+          <font size="16"/>
+          <text resource-bundle="Strings" key="dob"/>
+        </properties>
+      </component>
+      <component id="27968" class="javax.swing.JTextField" binding="D_O_B">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-8732686"/>
+          <font size="16"/>
+        </properties>
+      </component>
+      <component id="e94b1" class="javax.swing.JButton" binding="cancelButton" default-binding="true">
+        <constraints>
+          <grid row="9" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-870776"/>
+          <font size="18"/>
+          <foreground color="-880272"/>
+          <text resource-bundle="Strings" key="cancel_btn"/>
+        </properties>
+      </component>
+      <component id="7f5bb" class="javax.swing.JButton" binding="addButton" default-binding="true">
+        <constraints>
+          <grid row="9" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-870776"/>
+          <font size="18"/>
+          <foreground color="-880272"/>
+          <text resource-bundle="Strings" key="Add_btn"/>
+        </properties>
+      </component>
+      <component id="95f39" class="javax.swing.JTextField" binding="Address">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-8732686"/>
+          <font size="16"/>
+        </properties>
+      </component>
+      <component id="32595" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-51915"/>
+          <text resource-bundle="Strings" key="Symbols"/>
+        </properties>
+      </component>
+      <component id="4bdf0" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-51915"/>
+          <text resource-bundle="Strings" key="FillingGuide"/>
+        </properties>
+      </component>
+      <component id="41270" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Bookshelf Symbol 7" size="26" style="1"/>
+          <icon value="friend.png"/>
+          <text resource-bundle="Strings" key="Add_frame_msg"/>
+        </properties>
+      </component>
+      <component id="1fb29" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <icon value="Welcome2.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
