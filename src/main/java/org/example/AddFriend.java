@@ -83,10 +83,10 @@ public class AddFriend {
         var phn_pattern = Pattern.compile(Phn_pattern).matcher(Phn_num.getText().trim());
         var address_pattern = Pattern.compile(Address_pattern).matcher(Address.getText().trim());
         var d_o_b_pattern = Pattern.compile(D_O_B_pattern).matcher(D_O_B.getText().trim());
-        var year = Integer.parseInt(d_o_b_pattern.group(1));
-        var month = Integer.parseInt(d_o_b_pattern.group(2));
-        var day = Integer.parseInt(d_o_b_pattern.group(3));
-        if (!(email_pattern.matches() && phn_pattern.matches() && address_pattern.matches() && validateD_O_B(year, month, day))) {
+            var year = Integer.parseInt(D_O_B.getText().trim().substring(0,4));
+            var month = Integer.parseInt(D_O_B.getText().trim().substring(5,7));
+            var day = Integer.parseInt(D_O_B.getText().trim().substring(8,10));
+        if (!(email_pattern.matches() && phn_pattern.matches() && address_pattern.matches() && validateD_O_B(year, month, day) && d_o_b_pattern.matches())) {
             JOptionPane.showMessageDialog(null, "Invalid Email or Phone num or Address or D.O.B.");
             return false;
         }
@@ -105,6 +105,7 @@ public class AddFriend {
 
 
     private boolean validateD_O_B(int year, int month, int day) {
+        boolean flag=false;
         switch (month) {
             case 1:
             case 3:
@@ -112,31 +113,28 @@ public class AddFriend {
             case 7:
             case 8:
             case 10:
-            case 12: {
+            case 12:
                 if (day > 0 && day < 32)
-                    return true;
-            }
-            case 2: {
+                    flag=true;
+                break;
+            case 2:
                 if (year % 4 == 0) {
                     if (day > 0 && day < 30)
-                        return true;
-                } else {
-                    if (day > 0 && day < 29)
-                        return true;
+                        flag=true;
                 }
-
-            }
+                else
+                    if (day > 0 && day < 29)
+                        flag= true;
+                break;
             case 4:
             case 6:
             case 9:
-            case 11: {
+            case 11:
                 if (day > 0 && day < 31)
-                    return true;
-
-            }
-            default:
-                return false;
+                    flag= true;
+                 break;
         }
+        return flag;
     }
-
 }
+

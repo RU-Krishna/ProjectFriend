@@ -51,6 +51,7 @@ public class DeleteFriend {
                 first_text.setText("");
                 last_text.setText("");
                 flag = false;
+                JOptionPane.showMessageDialog(null,friend.getFirst_name()+" "+friend.getLast_name()+"is removed");
                 break;
             }
         }

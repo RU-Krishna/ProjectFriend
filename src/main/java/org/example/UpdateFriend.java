@@ -55,12 +55,13 @@ public class UpdateFriend {
 
 
     private void Update() {
-        boolean flag = true;
+        boolean flag = false;
         var op = Objects.requireNonNull(comboBox.getSelectedItem()).toString();
         var f_n = first_name.getText().replace(first_name.getText().charAt(0), Character.toUpperCase(first_name.getText().charAt(0))).trim();
         var l_n = last_name.getText().replace(last_name.getText().charAt(0), Character.toUpperCase(last_name.getText().charAt(0))).trim();
         for (Friend friend : Main.login.Data) {
             if (f_n.equals(friend.getFirst_name()) && l_n.equals(friend.getLast_name())) {
+                flag=true;
                 if (validate()) {
                     Main.login.Data.remove(friend);
                     String[] updated = {friend.primary(), op, updated_Value.getText().trim()};
@@ -75,7 +76,7 @@ public class UpdateFriend {
                     first_name.setText("");
                     last_name.setText("");
                     updated_Value.setText("");
-                    flag = false;
+                    JOptionPane.showMessageDialog(null,friend.getFirst_name()+" "+friend.getLast_name()+" is updated");
                     break;
                 } else {
                     JOptionPane.showMessageDialog(null, "Invalid Updated Value");
@@ -83,8 +84,8 @@ public class UpdateFriend {
             }
 
         }
-        if (flag)
-            JOptionPane.showMessageDialog(null, "Friend Present");
+        if (!flag)
+            JOptionPane.showMessageDialog(null, "Friend Absent");
     }
 
     private boolean validate() {
