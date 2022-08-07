@@ -32,7 +32,8 @@ public class LoginAndClose {
             statement.close();
             set.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "First enter the username and password present on your personal machine for your MYSQL in the  \"Create Database\" Class and then run the  \"Main Class\"" );
+            System.exit(0);
         }
     }
 
